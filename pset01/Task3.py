@@ -16,7 +16,7 @@ with open('calls.csv', 'r') as f:
 TASK 3:
 (080) is the area code for fixed line telephones in Bangalore.
 Fixed line numbers include parentheses, so Bangalore numbers
-have the form (080)xxxxxxx.)
+have the form (080)xxxxxxx.
 
 Part A: Find all of the area codes and mobile prefixes called by people
 in Bangalore.
@@ -43,3 +43,44 @@ Print the answer as a part of a message::
 to other fixed lines in Bangalore."
 The percentage should have 2 decimal digits
 """
+
+# Part A:
+
+# Create a set
+number_formats = set()
+# Go trhough wich line of the file calls (for loop)
+for line in calls:
+      # Condition: if line[0] starts with (080)
+      if "(080)" in line[0]:
+            # Compare every line[1] (receiving number) with area codes
+            if "(0" in line[1]:
+                  number_formats.add(line[1].split(sep=")")[0]+ ")")
+            elif line[1][0] == "7" or line[1][0] == "8" or line[1][0] == "9":
+                  number_formats.add(line[1][:4])
+            elif line[1][:3] == "140":
+                  number_formats.add("140")
+                  
+# Transform set to list so we can sort
+prefixe = list(number_formats)
+prefixe.sort()
+
+print("The numbers called by people in Bangalore have codes:")
+# Print each line
+for element in prefixe:
+      print(element)
+
+
+# Part B:
+
+# Variable to hold the number of calls
+number_calls_from = 0
+number_calls_to = 0
+
+# Loop through calls and find who made a call to Bangalore from Bangalore
+for line in calls:
+      if line[0][:5] == "(080)":
+            number_calls_from += 1
+            if line[1][:5] == "(080)":
+                  number_calls_to += 1 
+
+print("{} percent of calls from fixed lines in Bangalore are calls to other fixed lines in Bangalore.".format(round((number_calls_to/number_calls_from)*100,2)))
