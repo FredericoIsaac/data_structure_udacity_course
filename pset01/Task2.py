@@ -19,4 +19,20 @@ Print a message:
 "<telephone number> spent the longest time, <total time> seconds, on the phone during 
 September 2016.".
 """
+# Create The winner, assume that is the first number in the file
+winner_index = 0
+time_winner = calls[0][3]
+# Create a index to keep track
+index = 0
 
+# Iterate every line of the file
+for line in calls:
+    # Compare values os time spent for the call
+    if int(line[3]) > int(time_winner):
+        time_winner = line[3]
+        winner_index = index
+
+    # Increment index as such we pass to other line of the file
+    index += 1
+
+print("{} spent the longest time, {} seconds, on the phone during September 2016.".format(calls[winner_index][0], calls[winner_index][3]))
