@@ -16,3 +16,14 @@ Lesson learned: the values of time were a string, so comparing to strings with n
 The time complexity is **O(n)**, we ill have to pass through all lines of the file and compare.
 
 # Task 3
+
+Time complexity is **O(n)**, because we have to pass to the file calls, then copy to a list to sort and then again **O(n)** to print each line.
+
+# Task 4
+
+Leasson Learned trying to compare a list to a set ill get wrong values
+The time complexity is **O(n<sup>2</sup>)**, because the program pass through every line of the set created to compare to every element of the set.
+
+    for number in possible_marketers:
+    if number not in texts_sent or number not in texts_received:
+        marketers.append(number)
