@@ -1,3 +1,4 @@
+import operator
 """
 Read file into texts and calls.
 It's ok if you don't understand how to read files
@@ -19,20 +20,25 @@ Print a message:
 "<telephone number> spent the longest time, <total time> seconds, on the phone during 
 September 2016.".
 """
-# Create The winner, assume that is the first number in the file
-winner_index = 0
-time_winner = calls[0][3]
-# Create a index to keep track
-index = 0
 
-# Iterate every line of the file
-for line in calls:
-    # Compare values os time spent for the call
-    if int(line[3]) > int(time_winner):
-        time_winner = line[3]
-        winner_index = index
+# Create an empty dict
+number_time = {}
 
-    # Increment index as such we pass to other line of the file
-    index += 1
+# Iterate over the calls 
+for call in calls:
+    # If is a new entry of the caller to the dict, else
+    if call[0] not in number_time.keys():
+        number_time[call[0]] = int(call[3])
+    else:
+        number_time[call[0]] += int(call[3])
+    # If is a new entry of the callee to the dict, else
+    if call[1] not in number_time.keys():
+        number_time[call[1]] = int(call[3])
+    else:
+        number_time[call[0]] += int(call[3])
 
-print("{} spent the longest time, {} seconds, on the phone during September 2016.".format(calls[winner_index][0], calls[winner_index][3]))
+# See the dict.key that was max value
+number_max = max(number_time.items(), key=operator.itemgetter(1))[0]
+
+
+print("{} spent the longest time, {} seconds, on the phone during September 2016.".format(number_max, number_time[number_max]))

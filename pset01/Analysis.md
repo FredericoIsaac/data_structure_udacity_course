@@ -17,13 +17,9 @@ The time complexity is **O(n)**, we ill have to pass through all lines of the fi
 
 # Task 3
 
-Time complexity is **O(n)**, because we have to pass to the file calls, then copy to a list to sort and then again **O(n)** to print each line.
+The first lines the time complexity is **O(n)**, because we have to pass to the file calls, then copy to a list to sort and then again **O(n)** to print each line, then as inbuilt sort functions is being used the time complexity is now **O(nlog n)**, as **O(nlog n)** is greater than **O(n)** the complex time of this program is **O(nlog n)**.
 
 # Task 4
 
 Leasson Learned trying to compare a list to a set ill get wrong values
-The time complexity is **O(n<sup>2</sup>)**, because the program pass through every line of the set created to compare to every element of the set.
-
-    for number in possible_marketers:
-    if number not in texts_sent or number not in texts_received:
-        marketers.append(number)
+The time complexity is **O(nlog n)**, because the program as inbuilt sort being user that hence the complexity to **O(nlog n)**.
