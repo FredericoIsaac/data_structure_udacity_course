@@ -13,7 +13,7 @@ The runtime in this task is **O(n)** because we have to loops that ill iterate e
 # Task 2
 
 Lesson learned: the values of time were a string, so comparing to strings with numeric values ill give us the string that was more ASCII value.
-The time complexity is **O(n)**, we ill have to pass through all lines of the file and compare.
+The time complexity is **O(n^2)**, because of the nestes for loop.
 
 # Task 3
 

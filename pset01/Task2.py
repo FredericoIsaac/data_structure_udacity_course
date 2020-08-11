@@ -26,19 +26,11 @@ number_time = {}
 
 # Iterate over the calls 
 for call in calls:
-    # If is a new entry of the caller to the dict, else
-    if call[0] not in number_time.keys():
-        number_time[call[0]] = int(call[3])
-    else:
-        number_time[call[0]] += int(call[3])
-    # If is a new entry of the callee to the dict, else
-    if call[1] not in number_time.keys():
-        number_time[call[1]] = int(call[3])
-    else:
-        number_time[call[0]] += int(call[3])
+    for num in call[:2]:
+        number_time[num] = number_time.get(num, 0) + int(call[3])
 
 # See the dict.key that was max value
-number_max = max(number_time.items(), key=operator.itemgetter(1))[0]
+number_max = max(number_time.items(), key=operator.itemgetter(1))
 
 
-print("{} spent the longest time, {} seconds, on the phone during September 2016.".format(number_max, number_time[number_max]))
+print("{} spent the longest time, {} seconds, on the phone during September 2016.".format(number_max[0], number_max[1]))
