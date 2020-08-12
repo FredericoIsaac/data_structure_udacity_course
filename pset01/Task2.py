@@ -34,3 +34,11 @@ number_max = max(number_time.items(), key=operator.itemgetter(1))
 
 
 print("{} spent the longest time, {} seconds, on the phone during September 2016.".format(number_max[0], number_max[1]))
+
+"""
+Other Solution:
+# See the dict.key that was max value
+number_max = max(number_time, key=number_time.get)
+
+print("{} spent the longest time, {} seconds, on the phone during September 2016.".format(number_max, number_time[number_max]))
+"""

@@ -55,14 +55,13 @@ for line in calls:
             # Compare every line[1] (receiving number) with area codes
             if "(0" in line[1]:
                   number_formats.add(line[1].split(sep=")")[0]+ ")")
-            elif line[1][0] == "7" or line[1][0] == "8" or line[1][0] == "9":
+            elif line[1][0] in (('7', '8', '9')):
                   number_formats.add(line[1][:4])
             elif line[1][:3] == "140":
                   number_formats.add("140")
                   
-# Transform set to list so we can sort
-prefixe = list(number_formats)
-prefixe.sort()
+# Sort the set elements and output a list
+prefixe = sorted(number_formats)
 
 print("The numbers called by people in Bangalore have codes:")
 # Print each line
