@@ -15,6 +15,11 @@ Source: [Problem 1 - Udacity](https://classroom.udacity.com/nanodegrees/nd256/pa
 
 * The popitem() method removes the item that was last inserted into the dictionary.
 
+https://wiki.python.org/moin/TimeComplexity
+Append[1] is O(1)
+Pop last is O(1)
+
+
 ## Problem 2 - Finding Files
 
 Source: https://docs.python.org/3.7/library/os.path.html#
@@ -57,3 +62,9 @@ Your task for this problem is to fill out the union and intersection functions. 
 | Pop Item  | d.popitem()  | O(1)  | O(1)  |
 | Pop  | d.pop(item)  | O(1)  | O(N)  |
 |   |   |   |   |
+
+
+
+* In the respective "problem_1.py" files, include at least 3 test cases for each solution.
+    * For each test case, write the function call with the input you want to test and print it to the console".
+    * On the next line, comment out the output you expect to see from that function call. At least 2 of these must be edge cases, testing inputs such as null values, empty inputs, unusually large values, etc.

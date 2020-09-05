@@ -12,23 +12,48 @@
 # All operations must take O(1) time.
 
 # For the current problem, you can consider the size of cache = 5.
-
+from collections import OrderedDict
+    
 
 class LRU_Cache(object):
     
     def __init__(self, capacity=5):
         # Initialize class variables
-        pass
+        self.cache = OrderedDict()
+        self.capacity = capacity
 
     def get(self, key):
         # Retrieve item from provided key. Return -1 if nonexistent. 
-        pass
+        try:  # If value exists in the cache
+            value = self.cache.pop(key)
+            # Update Dict for priority
+            self.cache[key] = value
+            return value
+
+        except KeyError:
+            return -1
 
     def set(self, key, value):
-        # Set the value if the key is not present in the cache. If the cache is at capacity remove the oldest item. 
+        # if the key is already in the cache
+        if key in self.cache:
+            self.cache.pop(key)
+            # update priority
+            self.cache[key] = value
+        else:
+            # Set the value if the key is not present in the cache.
+            if len(self.cache) < self.capacity:
+                self.cache[key] = value
+            # If the cache is at capacity remove the oldest item. 
+            else:
+                # The popitem(last=False) method removes the item that was first inserted into the dictionary.
+                self.cache.popitem(last= False)
+                self.cache[key] = value
+                
+
+            
+
         
-        # The popitem() method removes the item that was last inserted into the dictionary.
-        pass
+        
 
 
 
