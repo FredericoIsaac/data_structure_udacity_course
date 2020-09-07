@@ -1,5 +1,25 @@
 import sys
 
+class Tree:
+    def __init__(self, left=None, right=None):
+        self.right = right
+        self.left = left
+
+    def children(self):
+        """
+        Ill return the children's node
+        """
+        return (self.left, self.right)
+
+    def nodes(self):
+        return (self.left, self.right)
+
+    def __str__(self):
+        """
+        Return the child's nodes in a string
+        """
+        return "%s__%s" % (self.left, self.right)
+
 def huffman_encoding(data):
     pass
 
